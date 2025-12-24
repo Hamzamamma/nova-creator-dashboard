@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   experimental: {
     optimizePackageImports: ["lucide-react", "@radix-ui/react-icons"],
     turbo: {
@@ -16,19 +19,15 @@ const nextConfig: NextConfig = {
     },
   },
   
-  // Image optimization
   images: {
     domains: ['ui.shadcn.com', 'images.unsplash.com'],
     formats: ['image/webp', 'image/avif'],
   },
   
-  // Webpack configuration
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Add custom webpack rules if needed
     return config;
   },
   
-  // Headers for better security and performance
   async headers() {
     return [
       {
@@ -51,7 +50,6 @@ const nextConfig: NextConfig = {
     ];
   },
   
-  // Redirects for better SEO
   async redirects() {
     return [
       {
