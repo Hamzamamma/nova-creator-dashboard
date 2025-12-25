@@ -92,6 +92,10 @@ export default function AnalisiPage() {
       }
     }
     fetchAnalytics()
+
+    // Auto-refresh ogni 30 secondi
+    const interval = setInterval(fetchAnalytics, 30000)
+    return () => clearInterval(interval)
   }, [])
 
   if (loading) {

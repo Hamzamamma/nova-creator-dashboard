@@ -92,6 +92,10 @@ export default function OrdiniPage() {
       }
     }
     fetchOrders()
+
+    // Auto-refresh ogni 30 secondi
+    const interval = setInterval(fetchOrders, 30000)
+    return () => clearInterval(interval)
   }, [])
 
   if (loading) {
