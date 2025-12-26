@@ -18,9 +18,9 @@ import {
   Users,
   Tag,
   Wallet,
-  Megaphone,
   BarChart2,
   Home,
+  Store,
 } from "lucide-react"
 import Link from "next/link"
 import { Logo } from "@/components/logo"
@@ -49,7 +49,7 @@ const data = {
       items: [
         {
           title: "Home",
-          url: "/dashboard-2",
+          url: "/dashboard",
           icon: Home,
         },
         {
@@ -62,21 +62,6 @@ const data = {
     {
       label: "Apps",
       items: [
-        {
-          title: "Mail",
-          url: "/mail",
-          icon: Mail,
-        },
-        {
-          title: "Chat",
-          url: "/chat",
-          icon: MessageCircle,
-        },
-        {
-          title: "Calendar",
-          url: "/calendar",
-          icon: Calendar,
-        },
         {
           title: "Users",
           url: "/users",
@@ -93,14 +78,9 @@ const data = {
           icon: Wallet,
         },
         {
-          title: "Marketing",
-          url: "/marketing",
-          icon: Megaphone,
-        },
-        {
-          title: "Analisi",
-          url: "/analisi",
-          icon: BarChart2,
+          title: "Negozio online",
+          url: "/negozio",
+          icon: Store,
         },
       ],
     },
@@ -208,11 +188,6 @@ const data = {
             },
           ],
         },
-        {
-          title: "FAQs",
-          url: "/faqs",
-          icon: HelpCircle,
-        },
       ],
     },
   ],
@@ -225,7 +200,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <Link href="/dashboard-2">
+              <Link href="/dashboard">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                   <Logo size={24} className="text-current" />
                 </div>
