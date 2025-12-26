@@ -1,76 +1,165 @@
 "use client";
 
-import { AppProvider } from "@shopify/polaris";
+import { useState, useCallback } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import {
+  AppProvider,
+  Frame,
+  Navigation,
+  TopBar,
+} from "@shopify/polaris";
+import {
+  HomeIcon,
+  OrderIcon,
+  DiscountIcon,
+  FinancesIcon,
+  PersonIcon,
+  StoreIcon,
+  SettingsIcon,
+  ExitIcon,
+} from "@shopify/polaris-icons";
 import "@shopify/polaris/build/esm/styles.css";
-
-import React from "react";
-import { AppSidebar } from "@/components/app-sidebar";
-import { SiteHeader } from "@/components/site-header";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import { ThemeCustomizer, ThemeCustomizerTrigger } from "@/components/theme-customizer";
-import { useSidebarConfig } from "@/hooks/use-sidebar-config";
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [themeCustomizerOpen, setThemeCustomizerOpen] = React.useState(false);
-  const { config } = useSidebarConfig();
+  const pathname = usePathname();
+  const router = useRouter();
+  const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
+  const [userMenuActive, setUserMenuActive] = useState(false);
+
+  const toggleMobileNavigation = useCallback(
+    () => setMobileNavigationActive((active) => !active),
+    []
+  );
+
+  const toggleUserMenu = useCallback(
+    () => setUserMenuActive((active) => !active),
+    []
+  );
+
+  const handleNavigationToggle = useCallback(() => {
+    setMobileNavigationActive((active) => !active);
+  }, []);
+
+  const navigationMarkup = (
+    <Navigation location={pathname}>
+      <Navigation.Section
+        title="Dashboard"
+        items={[
+          {
+            label: "Home",
+            icon: HomeIcon,
+            selected: pathname === "/dashboard",
+            onClick: () => router.push("/dashboard"),
+          },
+          {
+            label: "Ordini",
+            icon: OrderIcon,
+            selected: pathname === "/ordini",
+            onClick: () => router.push("/ordini"),
+          },
+        ]}
+      />
+      <Navigation.Section
+        title="Gestione"
+        items={[
+          {
+            label: "Sconti",
+            icon: DiscountIcon,
+            selected: pathname === "/sconti" || pathname.startsWith("/sconti/"),
+            onClick: () => router.push("/sconti"),
+          },
+          {
+            label: "Finanze",
+            icon: FinancesIcon,
+            selected: pathname === "/finanze",
+            onClick: () => router.push("/finanze"),
+          },
+          {
+            label: "Clienti",
+            icon: PersonIcon,
+            selected: pathname === "/users",
+            onClick: () => router.push("/users"),
+          },
+        ]}
+      />
+      <Navigation.Section
+        title="Canali"
+        items={[
+          {
+            label: "Negozio online",
+            icon: StoreIcon,
+            selected: pathname === "/negozio",
+            onClick: () => router.push("/negozio"),
+          },
+        ]}
+      />
+      <Navigation.Section
+        title="Impostazioni"
+        items={[
+          {
+            label: "Impostazioni",
+            icon: SettingsIcon,
+            selected: pathname === "/settings",
+            onClick: () => router.push("/settings"),
+          },
+        ]}
+        separator
+      />
+    </Navigation>
+  );
+
+  const userMenuMarkup = (
+    <TopBar.UserMenu
+      actions={[
+        {
+          items: [
+            { content: "Profilo", icon: PersonIcon },
+            { content: "Impostazioni", icon: SettingsIcon },
+          ],
+        },
+        {
+          items: [{ content: "Esci", icon: ExitIcon }],
+        },
+      ]}
+      name="Admin"
+      detail="Nova Creator"
+      initials="N"
+      open={userMenuActive}
+      onToggle={toggleUserMenu}
+    />
+  );
+
+  const topBarMarkup = (
+    <TopBar
+      showNavigationToggle
+      userMenu={userMenuMarkup}
+      onNavigationToggle={handleNavigationToggle}
+    />
+  );
+
+  const logo = {
+    width: 124,
+    topBarSource: "https://cdn.shopify.com/s/files/1/0446/6937/files/logo-shopify.svg",
+    contextualSaveBarSource: "https://cdn.shopify.com/s/files/1/0446/6937/files/logo-shopify.svg",
+    url: "/dashboard",
+    accessibilityLabel: "Nova Dashboard",
+  };
 
   return (
-    <SidebarProvider
-      style={{
-        "--sidebar-width": "16rem",
-        "--sidebar-width-icon": "3rem",
-        "--header-height": "calc(var(--spacing) * 14)",
-      } as React.CSSProperties}
-      className={config.collapsible === "none" ? "sidebar-none-mode" : ""}
-    >
-      {config.side === "left" ? (
-        <>
-          <AppSidebar
-            variant={config.variant}
-            collapsible={config.collapsible}
-            side={config.side}
-          />
-          <SidebarInset className="bg-[#f1f1f1]">
-            <SiteHeader />
-            <div className="flex flex-1 flex-col">
-              <div className="@container/main flex flex-1 flex-col gap-2 max-w-6xl mx-auto w-full">
-                <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 md:px-8 lg:px-12">
-                  <AppProvider i18n={{}}>{children}</AppProvider>
-                </div>
-              </div>
-            </div>
-          </SidebarInset>
-        </>
-      ) : (
-        <>
-          <SidebarInset className="bg-[#f1f1f1]">
-            <SiteHeader />
-            <div className="flex flex-1 flex-col">
-              <div className="@container/main flex flex-1 flex-col gap-2 max-w-6xl mx-auto w-full">
-                <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 md:px-8 lg:px-12">
-                  {children}
-                </div>
-              </div>
-            </div>
-          </SidebarInset>
-          <AppSidebar
-            variant={config.variant}
-            collapsible={config.collapsible}
-            side={config.side}
-          />
-        </>
-      )}
-
-      {/* Theme Customizer */}
-      <ThemeCustomizerTrigger onClick={() => setThemeCustomizerOpen(true)} />
-      <ThemeCustomizer
-        open={themeCustomizerOpen}
-        onOpenChange={setThemeCustomizerOpen}
-      />
-    </SidebarProvider>
+    <AppProvider i18n={{}}>
+      <Frame
+        logo={logo}
+        topBar={topBarMarkup}
+        navigation={navigationMarkup}
+        showMobileNavigation={mobileNavigationActive}
+        onNavigationDismiss={toggleMobileNavigation}
+      >
+        {children}
+      </Frame>
+    </AppProvider>
   );
 }

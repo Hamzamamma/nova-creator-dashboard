@@ -1,107 +1,179 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { ExternalLink, Pencil, RefreshCw } from "lucide-react"
+import {
+  Page,
+  Card,
+  Text,
+  BlockStack,
+  InlineStack,
+  Button,
+  Box,
+} from "@shopify/polaris"
+import {
+  RefreshIcon,
+  ExternalIcon,
+  EditIcon,
+  DesktopIcon,
+  MobileIcon,
+} from "@shopify/polaris-icons"
 
 export default function NegozioOnlinePage() {
   const [refreshKey, setRefreshKey] = useState(0)
   const siteUrl = "http://localhost:8080"
 
   return (
-    <div className="flex-1 space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">Negozio online</h1>
-          <p className="text-muted-foreground">Anteprima del tuo sito web</p>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button variant="outline" size="icon" onClick={() => setRefreshKey(k => k + 1)}>
-            <RefreshCw className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" asChild>
-            <a href={siteUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="h-4 w-4 mr-2" />
-              Apri sito
-            </a>
-          </Button>
-          <Button>
-            <Pencil className="h-4 w-4 mr-2" />
-            Modifica tema
-          </Button>
-        </div>
-      </div>
-
-      {/* Preview Container - Desktop e Mobile affiancati */}
-      <div className="flex gap-6 items-start">
-
-        {/* Desktop Preview */}
-        <div className="w-[640px]">
-          <p className="text-sm font-medium text-muted-foreground mb-3">Desktop</p>
-          <div className="border rounded-lg overflow-hidden bg-white shadow-lg">
-            {/* Browser Chrome */}
-            <div className="bg-gray-100 px-4 py-2 border-b flex items-center gap-3">
-              <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-              </div>
-              <div className="flex-1 flex justify-center">
-                <div className="bg-white rounded px-3 py-1 text-xs text-gray-500 border">
-                  con-mollica-o-senza.com
+    <Page
+      title="Negozio online"
+      subtitle="Anteprima del tuo sito web"
+      primaryAction={{
+        content: "Modifica tema",
+        icon: EditIcon,
+      }}
+      secondaryActions={[
+        {
+          content: "Aggiorna",
+          icon: RefreshIcon,
+          onAction: () => setRefreshKey(k => k + 1),
+        },
+        {
+          content: "Apri sito",
+          icon: ExternalIcon,
+          url: siteUrl,
+          external: true,
+        },
+      ]}
+    >
+      <BlockStack gap="500">
+        <InlineStack gap="500" align="start">
+          {/* Desktop Preview */}
+          <Card>
+            <BlockStack gap="400">
+              <InlineStack gap="200" blockAlign="center">
+                <DesktopIcon />
+                <Text as="h2" variant="headingMd">Desktop</Text>
+              </InlineStack>
+              <div style={{
+                border: "1px solid #e1e3e5",
+                borderRadius: "8px",
+                overflow: "hidden",
+                backgroundColor: "#fff",
+              }}>
+                {/* Browser Chrome */}
+                <div style={{
+                  backgroundColor: "#f6f6f7",
+                  padding: "8px 16px",
+                  borderBottom: "1px solid #e1e3e5",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                }}>
+                  <div style={{ display: "flex", gap: "6px" }}>
+                    <div style={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "#ff5f57" }} />
+                    <div style={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "#febc2e" }} />
+                    <div style={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "#28c840" }} />
+                  </div>
+                  <div style={{
+                    flex: 1,
+                    display: "flex",
+                    justifyContent: "center",
+                  }}>
+                    <div style={{
+                      backgroundColor: "#fff",
+                      borderRadius: "4px",
+                      padding: "4px 12px",
+                      fontSize: "12px",
+                      color: "#637381",
+                      border: "1px solid #e1e3e5",
+                    }}>
+                      con-mollica-o-senza.com
+                    </div>
+                  </div>
+                </div>
+                {/* Iframe Desktop */}
+                <div style={{ height: "400px", overflow: "hidden" }}>
+                  <iframe
+                    key={`desktop-${refreshKey}`}
+                    src={siteUrl}
+                    title="Anteprima desktop"
+                    style={{
+                      border: "none",
+                      width: "1280px",
+                      height: "800px",
+                      transform: "scale(0.5)",
+                      transformOrigin: "top left",
+                    }}
+                  />
                 </div>
               </div>
-            </div>
-            {/* Iframe Desktop */}
-            <div className="h-[400px] overflow-hidden">
-              <iframe
-                key={`desktop-${refreshKey}`}
-                src={siteUrl}
-                className="border-0"
-                title="Anteprima desktop"
-                style={{
-                  width: '1280px',
-                  height: '800px',
-                  transform: 'scale(0.5)',
-                  transformOrigin: 'top left',
-                }}
-              />
-            </div>
-          </div>
-        </div>
+            </BlockStack>
+          </Card>
 
-        {/* Mobile Preview */}
-        <div className="shrink-0">
-          <p className="text-sm font-medium text-muted-foreground mb-3">Mobile</p>
-          <div className="w-[220px] border-[8px] border-gray-800 rounded-[2rem] overflow-hidden bg-white shadow-2xl">
-            {/* Phone Notch */}
-            <div className="bg-gray-800 h-5 flex items-center justify-center">
-              <div className="w-12 h-3 bg-black rounded-b-lg" />
-            </div>
-            {/* Iframe Mobile */}
-            <div className="h-[400px] overflow-hidden">
-              <iframe
-                key={`mobile-${refreshKey}`}
-                src={siteUrl}
-                className="border-0"
-                title="Anteprima mobile"
-                style={{
-                  width: '375px',
-                  height: '667px',
-                  transform: 'scale(0.58)',
-                  transformOrigin: 'top left',
-                }}
-              />
-            </div>
-            {/* Home Indicator */}
-            <div className="bg-gray-800 h-5 flex items-center justify-center">
-              <div className="w-20 h-1 bg-gray-500 rounded-full" />
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
+          {/* Mobile Preview */}
+          <Card>
+            <BlockStack gap="400">
+              <InlineStack gap="200" blockAlign="center">
+                <MobileIcon />
+                <Text as="h2" variant="headingMd">Mobile</Text>
+              </InlineStack>
+              <div style={{
+                width: "220px",
+                border: "8px solid #1a1a1a",
+                borderRadius: "32px",
+                overflow: "hidden",
+                backgroundColor: "#fff",
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+              }}>
+                {/* Phone Notch */}
+                <div style={{
+                  backgroundColor: "#1a1a1a",
+                  height: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}>
+                  <div style={{
+                    width: "48px",
+                    height: "12px",
+                    backgroundColor: "#000",
+                    borderRadius: "0 0 8px 8px",
+                  }} />
+                </div>
+                {/* Iframe Mobile */}
+                <div style={{ height: "400px", overflow: "hidden" }}>
+                  <iframe
+                    key={`mobile-${refreshKey}`}
+                    src={siteUrl}
+                    title="Anteprima mobile"
+                    style={{
+                      border: "none",
+                      width: "375px",
+                      height: "667px",
+                      transform: "scale(0.58)",
+                      transformOrigin: "top left",
+                    }}
+                  />
+                </div>
+                {/* Home Indicator */}
+                <div style={{
+                  backgroundColor: "#1a1a1a",
+                  height: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}>
+                  <div style={{
+                    width: "80px",
+                    height: "4px",
+                    backgroundColor: "#4a4a4a",
+                    borderRadius: "2px",
+                  }} />
+                </div>
+              </div>
+            </BlockStack>
+          </Card>
+        </InlineStack>
+      </BlockStack>
+    </Page>
   )
 }

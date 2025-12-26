@@ -1,10 +1,27 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ChartAreaInteractive } from "./components/chart-area-interactive"
-import { SectionCards } from "./components/section-cards"
-import { TopProducts } from "./components/top-products"
-import { Loader2 } from "lucide-react"
+import {
+  Page,
+  Layout,
+  Card,
+  Text,
+  BlockStack,
+  InlineStack,
+  Badge,
+  Icon,
+  Spinner,
+  Box,
+  InlineGrid,
+  Divider,
+} from "@shopify/polaris"
+import {
+  CashDollarIcon,
+  OrderIcon,
+  PackageIcon,
+  ProductIcon,
+  ChartVerticalIcon,
+} from "@shopify/polaris-icons"
 
 interface HomeData {
   metrics: {
@@ -15,10 +32,9 @@ interface HomeData {
   }
   salesChartData: { day: string; sales: number }[]
   topProducts: any[]
-  recentTransactions: any[]
 }
 
-export default function Page() {
+export default function DashboardPage() {
   const [data, setData] = useState<HomeData | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -41,26 +57,109 @@ export default function Page() {
 
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center h-96">
-        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-      </div>
+      <Page title="Dashboard">
+        <div style={{ display: "flex", justifyContent: "center", padding: "100px" }}>
+          <Spinner size="large" />
+        </div>
+      </Page>
     )
   }
 
-  return (
-    <>
-      <div className="px-4 lg:px-6">
-        <div className="flex flex-col gap-2">
-          <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
-          <p className="text-muted-foreground">Panoramica delle tue vendite</p>
-        </div>
-      </div>
+  const stats = [
+    {
+      title: "Vendite Totali",
+      value: "€" + (data?.metrics?.totalRevenue || "0.00"),
+      icon: CashDollarIcon,
+      status: "success" as const,
+    },
+    {
+      title: "Ordini",
+      value: data?.metrics?.totalOrders?.toString() || "0",
+      icon: OrderIcon,
+      status: "info" as const,
+    },
+    {
+      title: "Ordini Evasi",
+      value: data?.metrics?.fulfilledOrders?.toString() || "0",
+      icon: PackageIcon,
+      status: "success" as const,
+    },
+    {
+      title: "Prodotti",
+      value: data?.metrics?.totalProducts?.toString() || "0",
+      icon: ProductIcon,
+      status: "info" as const,
+    },
+  ]
 
-      <div className="@container/main px-4 lg:px-6 space-y-6">
-        <SectionCards metrics={data?.metrics} />
-        <ChartAreaInteractive chartData={data?.salesChartData} />
-        <TopProducts products={data?.topProducts} />
-      </div>
-    </>
+  return (
+    <Page
+      title="Dashboard"
+      subtitle="Panoramica delle tue vendite"
+      primaryAction={{ content: "Aggiorna", onAction: () => window.location.reload() }}
+    >
+      <BlockStack gap="500">
+        <InlineGrid columns={{ xs: 1, sm: 2, md: 4 }} gap="400">
+          {stats.map((stat, index) => (
+            <Card key={index}>
+              <BlockStack gap="200">
+                <InlineStack align="space-between" blockAlign="center">
+                  <InlineStack gap="200" blockAlign="center">
+                    <Icon source={stat.icon} tone="base" />
+                    <Text as="span" variant="bodySm" tone="subdued">
+                      {stat.title}
+                    </Text>
+                  </InlineStack>
+                  <Badge tone={stat.status}>Live</Badge>
+                </InlineStack>
+                <Text as="p" variant="headingXl" fontWeight="semibold">
+                  {stat.value}
+                </Text>
+              </BlockStack>
+            </Card>
+          ))}
+        </InlineGrid>
+
+        <Layout>
+          <Layout.Section>
+            <Card>
+              <BlockStack gap="400">
+                <InlineStack align="space-between">
+                  <BlockStack gap="100">
+                    <Text as="h2" variant="headingMd">Vendite ultimi 7 giorni</Text>
+                    <Text as="p" variant="bodySm" tone="subdued">Andamento delle vendite</Text>
+                  </BlockStack>
+                </InlineStack>
+                <Divider />
+                <Box minHeight="200px" padding="400">
+                  <Text as="p" tone="subdued">Grafico vendite</Text>
+                </Box>
+              </BlockStack>
+            </Card>
+          </Layout.Section>
+        </Layout>
+
+        <Card>
+          <BlockStack gap="400">
+            <Text as="h2" variant="headingMd">Prodotti piu venduti</Text>
+            <Divider />
+            {data?.topProducts && data.topProducts.length > 0 ? (
+              <BlockStack gap="300">
+                {data.topProducts.slice(0, 5).map((product: any, index: number) => (
+                  <InlineStack key={index} align="space-between" blockAlign="center">
+                    <InlineStack gap="300" blockAlign="center">
+                      <Text as="span" variant="bodyMd">{index + 1}. {product.title || product.nome}</Text>
+                    </InlineStack>
+                    <Badge tone="success">{product.vendite || 0} vendite</Badge>
+                  </InlineStack>
+                ))}
+              </BlockStack>
+            ) : (
+              <Text as="p" tone="subdued">Nessun prodotto venduto</Text>
+            )}
+          </BlockStack>
+        </Card>
+      </BlockStack>
+    </Page>
   )
 }

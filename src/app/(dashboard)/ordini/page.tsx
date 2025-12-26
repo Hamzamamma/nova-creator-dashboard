@@ -1,32 +1,28 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+  Page,
+  Layout,
+  Card,
+  Text,
+  BlockStack,
+  InlineStack,
+  Badge,
+  Icon,
+  Spinner,
+  InlineGrid,
+  Divider,
+  DataTable,
+  EmptyState,
+} from "@shopify/polaris"
 import {
-  ShoppingCart,
-  Package,
-  RotateCcw,
-  CheckCircle,
-  Truck,
-  Loader2,
-  Globe,
-} from "lucide-react"
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart"
-import { Area, AreaChart, XAxis, YAxis, CartesianGrid } from "recharts"
+  OrderIcon,
+  PackageIcon,
+  RefreshIcon,
+  CheckCircleIcon,
+  DeliveryIcon,
+} from "@shopify/polaris-icons"
 
 interface OrdersData {
   currency: string
@@ -51,25 +47,18 @@ interface OrdersData {
   }[]
 }
 
-const chartConfig = {
-  ordini: {
-    label: "Ordini",
-    color: "hsl(var(--primary))",
-  },
-} satisfies ChartConfig
-
 function getStatoBadge(stato: string) {
   switch (stato) {
     case "consegnato":
-      return <Badge className="bg-green-500/10 text-green-500 hover:bg-green-500/20">Consegnato</Badge>
+      return <Badge tone="success">Consegnato</Badge>
     case "spedito":
-      return <Badge className="bg-blue-500/10 text-blue-500 hover:bg-blue-500/20">Spedito</Badge>
+      return <Badge tone="info">Spedito</Badge>
     case "in_lavorazione":
-      return <Badge className="bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20">In lavorazione</Badge>
+      return <Badge tone="warning">In lavorazione</Badge>
     case "annullato":
-      return <Badge className="bg-red-500/10 text-red-500 hover:bg-red-500/20">Annullato</Badge>
+      return <Badge tone="critical">Annullato</Badge>
     default:
-      return <Badge variant="secondary">{stato}</Badge>
+      return <Badge>{stato}</Badge>
   }
 }
 
@@ -77,218 +66,151 @@ export default function OrdiniPage() {
   const [data, setData] = useState<OrdersData | null>(null)
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    async function fetchOrders() {
-      try {
-        const res = await fetch("/api/shopify/orders")
-        const json = await res.json()
-        if (json.success) {
-          setData(json)
-        }
-      } catch (err) {
-        console.error(err)
-      } finally {
-        setLoading(false)
+  async function fetchOrders() {
+    setLoading(true)
+    try {
+      const res = await fetch("/api/shopify/orders")
+      const json = await res.json()
+      if (json.success) {
+        setData(json)
       }
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setLoading(false)
     }
-    fetchOrders()
+  }
 
-    // Auto-refresh ogni 30 secondi
+  useEffect(() => {
+    fetchOrders()
     const interval = setInterval(fetchOrders, 30000)
     return () => clearInterval(interval)
   }, [])
 
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center min-h-[400px]">
-        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-      </div>
+      <Page title="Ordini">
+        <div style={{ display: "flex", justifyContent: "center", padding: "100px" }}>
+          <Spinner size="large" />
+        </div>
+      </Page>
     )
   }
 
   const stats = data?.stats
 
+  const statsCards = [
+    { title: "Ordini", value: stats?.totalOrders || 0, icon: OrderIcon, sub: "Ordini totali" },
+    { title: "Articoli", value: stats?.totalItems || 0, icon: PackageIcon, sub: "Prodotti venduti" },
+    { title: "Resi", value: stats?.refundedOrders || 0, icon: RefreshIcon, sub: (stats?.refundRate || "0") + "% del totale" },
+    { title: "Evasi", value: stats?.fulfilledOrders || 0, icon: CheckCircleIcon, sub: (stats?.fulfillmentRate || "0") + "% completati" },
+    { title: "Consegnati", value: stats?.deliveredOrders || 0, icon: DeliveryIcon, sub: "Spedizioni completate" },
+  ]
+
+  const tableRows = data?.ordiniRecenti?.map((ordine) => [
+    ordine.id,
+    ordine.prodotto,
+    ordine.cliente,
+    ordine.data,
+    ordine.stato,
+    ordine.totale,
+  ]) || []
+
   return (
-    <div className="flex-1 space-y-6 px-6 pt-0">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex flex-col gap-1">
-          <h1 className="text-2xl font-bold tracking-tight">Ordini</h1>
-          <p className="text-muted-foreground">Monitora gli ordini dei tuoi prodotti</p>
-        </div>
-        <Badge variant="outline" className="text-green-600 border-green-200 bg-green-50">
-          <Globe className="me-1 size-3" />
-          Dati Shopify
-        </Badge>
-      </div>
+    <Page
+      title="Ordini"
+      subtitle="Monitora gli ordini dei tuoi prodotti"
+      primaryAction={{ content: "Aggiorna", onAction: fetchOrders }}
+      secondaryActions={[{ content: "Esporta" }]}
+    >
+      <BlockStack gap="500">
+        {/* Stats Cards */}
+        <InlineGrid columns={{ xs: 1, sm: 2, md: 3, lg: 5 }} gap="400">
+          {statsCards.map((stat, index) => (
+            <Card key={index}>
+              <BlockStack gap="200">
+                <InlineStack align="space-between" blockAlign="center">
+                  <InlineStack gap="200" blockAlign="center">
+                    <Icon source={stat.icon} tone="base" />
+                    <Text as="span" variant="bodySm" tone="subdued">{stat.title}</Text>
+                  </InlineStack>
+                  <Badge tone="info">Live</Badge>
+                </InlineStack>
+                <Text as="p" variant="headingXl" fontWeight="semibold">{stat.value}</Text>
+                <Text as="span" variant="bodySm" tone="subdued">{stat.sub}</Text>
+              </BlockStack>
+            </Card>
+          ))}
+        </InlineGrid>
 
-      {/* Stats Cards */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <ShoppingCart className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Ordini</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold">{stats?.totalOrders || 0}</span>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Package className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Articoli</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold">{stats?.totalItems || 0}</span>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <RotateCcw className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Resi</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold">{stats?.refundedOrders || 0}</span>
-              <span className="text-xs text-muted-foreground">{stats?.refundRate || 0}%</span>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <CheckCircle className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Evasi</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold">{stats?.fulfilledOrders || 0}</span>
-              <span className="text-xs text-green-500">{stats?.fulfillmentRate || 0}%</span>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Truck className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Consegnati</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold">{stats?.deliveredOrders || 0}</span>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Grafico Ordini */}
-        <Card className="lg:col-span-2">
-          <CardHeader>
-            <CardTitle>Andamento Ordini</CardTitle>
-            <CardDescription>Ordini ricevuti negli ultimi 7 giorni</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={chartConfig} className="h-[250px] w-full">
-              <AreaChart data={data?.chartData || []} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-                <XAxis dataKey="giorno" className="text-xs" />
-                <YAxis className="text-xs" />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Area
-                  type="monotone"
-                  dataKey="ordini"
-                  stroke="hsl(var(--primary))"
-                  fill="hsl(var(--primary))"
-                  fillOpacity={0.2}
-                  strokeWidth={2}
-                />
-              </AreaChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-
-        {/* Top Prodotti */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Prodotti piu venduti</CardTitle>
-            <CardDescription>In base agli ordini</CardDescription>
-          </CardHeader>
-          <CardContent>
-            {data?.topProdotti && data.topProdotti.length > 0 ? (
-              <div className="space-y-4">
-                {data.topProdotti.map((prodotto, index) => (
-                  <div key={index} className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-sm font-medium">
-                        {index + 1}
-                      </div>
-                      <span className="text-sm font-medium truncate max-w-[140px]">{prodotto.nome}</span>
+        {/* Charts Row */}
+        <Layout>
+          <Layout.Section variant="twoThirds">
+            <Card>
+              <BlockStack gap="400">
+                <Text as="h2" variant="headingMd">Andamento Ordini</Text>
+                <Text as="p" variant="bodySm" tone="subdued">Ordini ricevuti negli ultimi 7 giorni</Text>
+                <Divider />
+                <div style={{ height: "200px", display: "flex", alignItems: "flex-end", gap: "8px", padding: "16px" }}>
+                  {data?.chartData?.map((item, i) => (
+                    <div key={i} style={{ flex: 1, textAlign: "center" }}>
+                      <div style={{
+                        height: Math.max(item.ordini * 30, 10) + "px",
+                        backgroundColor: "#008060",
+                        borderRadius: "4px 4px 0 0",
+                        marginBottom: "8px",
+                      }} />
+                      <Text as="span" variant="bodySm" tone="subdued">{item.giorno}</Text>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-muted-foreground">{prodotto.vendite}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              </BlockStack>
+            </Card>
+          </Layout.Section>
+          <Layout.Section variant="oneThird">
+            <Card>
+              <BlockStack gap="400">
+                <Text as="h2" variant="headingMd">Prodotti piu venduti</Text>
+                <Divider />
+                {data?.topProdotti && data.topProdotti.length > 0 ? (
+                  <BlockStack gap="300">
+                    {data.topProdotti.map((prodotto, index) => (
+                      <InlineStack key={index} align="space-between" blockAlign="center">
+                        <Text as="span" variant="bodyMd">{index + 1}. {prodotto.nome}</Text>
+                        <Badge tone="success">{prodotto.vendite}</Badge>
+                      </InlineStack>
+                    ))}
+                  </BlockStack>
+                ) : (
+                  <Text as="p" tone="subdued">Nessun prodotto venduto</Text>
+                )}
+              </BlockStack>
+            </Card>
+          </Layout.Section>
+        </Layout>
+
+        {/* Orders Table */}
+        <Card>
+          <BlockStack gap="400">
+            <Text as="h2" variant="headingMd">Ordini Recenti</Text>
+            <Divider />
+            {tableRows.length > 0 ? (
+              <DataTable
+                columnContentTypes={["text", "text", "text", "text", "text", "numeric"]}
+                headings={["Ordine", "Prodotto", "Cliente", "Data", "Stato", "Totale"]}
+                rows={tableRows}
+              />
             ) : (
-              <div className="flex flex-col items-center justify-center py-8 text-center">
-                <Package className="h-10 w-10 text-muted-foreground/50 mb-3" />
-                <p className="text-sm text-muted-foreground">Nessun prodotto venduto</p>
-              </div>
+              <EmptyState
+                heading="Nessun ordine ancora"
+                image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
+              >
+                <p>Gli ordini appariranno qui quando riceverai il primo</p>
+              </EmptyState>
             )}
-          </CardContent>
+          </BlockStack>
         </Card>
-      </div>
-
-      {/* Tabella Ordini Recenti */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Ordini Recenti</CardTitle>
-          <CardDescription>Gli ultimi ordini ricevuti per i tuoi prodotti</CardDescription>
-        </CardHeader>
-        <CardContent>
-          {data?.ordiniRecenti && data.ordiniRecenti.length > 0 ? (
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Ordine</TableHead>
-                  <TableHead>Prodotto</TableHead>
-                  <TableHead>Cliente</TableHead>
-                  <TableHead>Data</TableHead>
-                  <TableHead>Stato</TableHead>
-                  <TableHead className="text-right">Totale</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {data.ordiniRecenti.map((ordine) => (
-                  <TableRow key={ordine.id}>
-                    <TableCell className="font-medium">{ordine.id}</TableCell>
-                    <TableCell className="max-w-[200px] truncate">{ordine.prodotto}</TableCell>
-                    <TableCell>{ordine.cliente}</TableCell>
-                    <TableCell>{ordine.data}</TableCell>
-                    <TableCell>{getStatoBadge(ordine.stato)}</TableCell>
-                    <TableCell className="text-right font-medium">{ordine.totale}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          ) : (
-            <div className="flex flex-col items-center justify-center py-12 text-center">
-              <ShoppingCart className="h-12 w-12 text-muted-foreground/50 mb-4" />
-              <p className="text-muted-foreground">Nessun ordine ancora</p>
-              <p className="text-sm text-muted-foreground mt-1">Gli ordini appariranno qui quando riceverai il primo</p>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+      </BlockStack>
+    </Page>
   )
 }
