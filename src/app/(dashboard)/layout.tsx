@@ -12,7 +12,7 @@ import {
   HomeIcon,
   OrderIcon,
   DiscountIcon,
-  FinancesIcon,
+  CashDollarIcon,
   PersonIcon,
   StoreIcon,
   SettingsIcon,
@@ -74,7 +74,7 @@ export default function DashboardLayout({
           },
           {
             label: "Finanze",
-            icon: FinancesIcon,
+            icon: CashDollarIcon,
             selected: pathname === "/finanze",
             onClick: () => router.push("/finanze"),
           },
