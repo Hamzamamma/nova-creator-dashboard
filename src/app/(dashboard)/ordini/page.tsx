@@ -123,7 +123,7 @@ export default function OrdiniPage() {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center gap-2 mb-2">
