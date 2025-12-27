@@ -1,0 +1,576 @@
+{
+  "collections": [
+    {
+      "id": "col-001",
+      "title": "Novita Estate 2024",
+      "description": "Scopri la nostra collezione estiva con i migliori prodotti per la stagione calda. Costumi, accessori da spiaggia e abbigliamento leggero.",
+      "type": "manual",
+      "image": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400",
+      "productsCount": 45,
+      "products": [],
+      "conditions": [],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Novita Estate 2024 | Nova Shop",
+        "metaDescription": "Esplora la collezione estate 2024 con abbigliamento e accessori per la stagione calda.",
+        "urlHandle": "novita-estate-2024"
+      },
+      "sortOrder": "best_selling",
+      "isPublished": true,
+      "publishedAt": "2024-06-01T10:00:00Z",
+      "createdAt": "2024-05-15T08:30:00Z",
+      "updatedAt": "2024-06-20T14:45:00Z"
+    },
+    {
+      "id": "col-002",
+      "title": "Best Sellers",
+      "description": "I prodotti piu amati dai nostri clienti. Una selezione dei nostri articoli piu venduti.",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400",
+      "productsCount": 32,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-001",
+          "field": "product_tag",
+          "operator": "equals",
+          "value": "bestseller"
+        }
+      ],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Best Sellers | Nova Shop",
+        "metaDescription": "Scopri i nostri prodotti piu venduti e amati dai clienti.",
+        "urlHandle": "best-sellers"
+      },
+      "sortOrder": "best_selling",
+      "isPublished": true,
+      "publishedAt": "2024-01-10T09:00:00Z",
+      "createdAt": "2024-01-05T11:20:00Z",
+      "updatedAt": "2024-06-25T16:30:00Z"
+    },
+    {
+      "id": "col-003",
+      "title": "Saldi Fino al 50%",
+      "description": "Approfitta dei nostri saldi con sconti fino al 50% su una vasta selezione di prodotti.",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400",
+      "productsCount": 78,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-002",
+          "field": "compare_at_price",
+          "operator": "is_set",
+          "value": ""
+        },
+        {
+          "id": "cond-003",
+          "field": "product_tag",
+          "operator": "equals",
+          "value": "saldi"
+        }
+      ],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Saldi Fino al 50% | Nova Shop",
+        "metaDescription": "Grandi saldi con sconti fino al 50%. Acquista ora i tuoi prodotti preferiti a prezzi ridotti.",
+        "urlHandle": "saldi"
+      },
+      "sortOrder": "price_asc",
+      "isPublished": true,
+      "publishedAt": "2024-06-15T00:00:00Z",
+      "createdAt": "2024-06-10T09:00:00Z",
+      "updatedAt": "2024-06-22T11:15:00Z"
+    },
+    {
+      "id": "col-004",
+      "title": "Abbigliamento Uomo",
+      "description": "Collezione completa di abbigliamento maschile. T-shirt, camicie, pantaloni e molto altro.",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1617137968427-85924c800a22?w=400",
+      "productsCount": 156,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-004",
+          "field": "product_type",
+          "operator": "equals",
+          "value": "Abbigliamento Uomo"
+        }
+      ],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Abbigliamento Uomo | Nova Shop",
+        "metaDescription": "Scopri la nostra collezione di abbigliamento maschile con le ultime tendenze.",
+        "urlHandle": "abbigliamento-uomo"
+      },
+      "sortOrder": "alpha_asc",
+      "isPublished": true,
+      "publishedAt": "2024-02-01T10:00:00Z",
+      "createdAt": "2024-01-20T15:00:00Z",
+      "updatedAt": "2024-06-18T09:30:00Z"
+    },
+    {
+      "id": "col-005",
+      "title": "Abbigliamento Donna",
+      "description": "La moda femminile al suo meglio. Abiti, gonne, top e accessori per ogni occasione.",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400",
+      "productsCount": 189,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-005",
+          "field": "product_type",
+          "operator": "equals",
+          "value": "Abbigliamento Donna"
+        }
+      ],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Abbigliamento Donna | Nova Shop",
+        "metaDescription": "Esplora la nostra collezione di moda femminile con le ultime tendenze.",
+        "urlHandle": "abbigliamento-donna"
+      },
+      "sortOrder": "best_selling",
+      "isPublished": true,
+      "publishedAt": "2024-02-01T10:00:00Z",
+      "createdAt": "2024-01-20T15:30:00Z",
+      "updatedAt": "2024-06-19T10:45:00Z"
+    },
+    {
+      "id": "col-006",
+      "title": "Accessori",
+      "description": "Completa il tuo look con i nostri accessori: borse, cinture, occhiali e gioielli.",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400",
+      "productsCount": 94,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-006",
+          "field": "product_type",
+          "operator": "contains",
+          "value": "Accessori"
+        }
+      ],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Accessori Moda | Nova Shop",
+        "metaDescription": "Scopri la nostra collezione di accessori moda: borse, cinture, occhiali e gioielli.",
+        "urlHandle": "accessori"
+      },
+      "sortOrder": "price_desc",
+      "isPublished": true,
+      "publishedAt": "2024-03-01T09:00:00Z",
+      "createdAt": "2024-02-25T14:00:00Z",
+      "updatedAt": "2024-06-15T13:20:00Z"
+    },
+    {
+      "id": "col-007",
+      "title": "Calzature",
+      "description": "Scarpe per ogni occasione: sneakers, stivali, sandali e scarpe eleganti.",
+      "type": "manual",
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",
+      "productsCount": 67,
+      "products": [],
+      "conditions": [],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Calzature | Nova Shop",
+        "metaDescription": "Esplora la nostra collezione di calzature per uomo e donna.",
+        "urlHandle": "calzature"
+      },
+      "sortOrder": "manual",
+      "isPublished": true,
+      "publishedAt": "2024-03-15T10:00:00Z",
+      "createdAt": "2024-03-10T11:00:00Z",
+      "updatedAt": "2024-06-20T08:00:00Z"
+    },
+    {
+      "id": "col-008",
+      "title": "Prodotti Premium",
+      "description": "Selezione esclusiva dei nostri prodotti premium con materiali di alta qualita.",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400",
+      "productsCount": 28,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-007",
+          "field": "product_price",
+          "operator": "greater_than",
+          "value": "200"
+        },
+        {
+          "id": "cond-008",
+          "field": "product_tag",
+          "operator": "equals",
+          "value": "premium"
+        }
+      ],
+      "conditionRelation": "any",
+      "seo": {
+        "pageTitle": "Prodotti Premium | Nova Shop",
+        "metaDescription": "Scopri la nostra selezione premium con prodotti di alta qualita.",
+        "urlHandle": "prodotti-premium"
+      },
+      "sortOrder": "price_desc",
+      "isPublished": true,
+      "publishedAt": "2024-04-01T09:00:00Z",
+      "createdAt": "2024-03-28T16:00:00Z",
+      "updatedAt": "2024-06-21T14:30:00Z"
+    },
+    {
+      "id": "col-009",
+      "title": "Sportswear",
+      "description": "Abbigliamento sportivo per allenamento, running, yoga e fitness.",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400",
+      "productsCount": 112,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-009",
+          "field": "product_type",
+          "operator": "equals",
+          "value": "Sportswear"
+        }
+      ],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Sportswear | Nova Shop",
+        "metaDescription": "Abbigliamento sportivo per ogni attivita: running, yoga, fitness e molto altro.",
+        "urlHandle": "sportswear"
+      },
+      "sortOrder": "best_selling",
+      "isPublished": true,
+      "publishedAt": "2024-04-15T08:00:00Z",
+      "createdAt": "2024-04-10T10:00:00Z",
+      "updatedAt": "2024-06-22T09:15:00Z"
+    },
+    {
+      "id": "col-010",
+      "title": "Nuovi Arrivi",
+      "description": "I prodotti appena arrivati nel nostro negozio. Scopri le ultime novita.",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400",
+      "productsCount": 34,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-010",
+          "field": "product_tag",
+          "operator": "equals",
+          "value": "nuovo"
+        }
+      ],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Nuovi Arrivi | Nova Shop",
+        "metaDescription": "Scopri i prodotti appena arrivati nel nostro negozio.",
+        "urlHandle": "nuovi-arrivi"
+      },
+      "sortOrder": "created_desc",
+      "isPublished": true,
+      "publishedAt": "2024-05-01T09:00:00Z",
+      "createdAt": "2024-04-28T11:00:00Z",
+      "updatedAt": "2024-06-25T08:00:00Z"
+    },
+    {
+      "id": "col-011",
+      "title": "Eco-Friendly",
+      "description": "Prodotti sostenibili realizzati con materiali eco-friendly e processi rispettosi dell'ambiente.",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400",
+      "productsCount": 41,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-011",
+          "field": "product_tag",
+          "operator": "contains",
+          "value": "eco"
+        }
+      ],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Prodotti Eco-Friendly | Nova Shop",
+        "metaDescription": "Scopri la nostra collezione di prodotti sostenibili e rispettosi dell'ambiente.",
+        "urlHandle": "eco-friendly"
+      },
+      "sortOrder": "alpha_asc",
+      "isPublished": true,
+      "publishedAt": "2024-05-10T10:00:00Z",
+      "createdAt": "2024-05-05T14:00:00Z",
+      "updatedAt": "2024-06-18T16:45:00Z"
+    },
+    {
+      "id": "col-012",
+      "title": "Collezione Inverno",
+      "description": "Preparati per l'inverno con cappotti, maglioni, sciarpe e abbigliamento caldo.",
+      "type": "manual",
+      "image": "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=400",
+      "productsCount": 89,
+      "products": [],
+      "conditions": [],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Collezione Inverno | Nova Shop",
+        "metaDescription": "Scopri la nostra collezione invernale con abbigliamento caldo e accessori.",
+        "urlHandle": "collezione-inverno"
+      },
+      "sortOrder": "manual",
+      "isPublished": false,
+      "publishedAt": null,
+      "createdAt": "2024-06-01T09:00:00Z",
+      "updatedAt": "2024-06-15T11:30:00Z"
+    },
+    {
+      "id": "col-013",
+      "title": "Sotto i 50 Euro",
+      "description": "Prodotti di qualita a prezzi accessibili. Tutti sotto i 50 euro.",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400",
+      "productsCount": 143,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-012",
+          "field": "product_price",
+          "operator": "less_than",
+          "value": "50"
+        }
+      ],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Prodotti Sotto i 50 Euro | Nova Shop",
+        "metaDescription": "Scopri tutti i nostri prodotti sotto i 50 euro. Qualita a prezzi accessibili.",
+        "urlHandle": "sotto-50-euro"
+      },
+      "sortOrder": "price_asc",
+      "isPublished": true,
+      "publishedAt": "2024-05-20T08:00:00Z",
+      "createdAt": "2024-05-18T10:00:00Z",
+      "updatedAt": "2024-06-24T09:00:00Z"
+    },
+    {
+      "id": "col-014",
+      "title": "Regali",
+      "description": "Idee regalo perfette per ogni occasione: compleanni, anniversari, festivita.",
+      "type": "manual",
+      "image": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=400",
+      "productsCount": 56,
+      "products": [],
+      "conditions": [],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Idee Regalo | Nova Shop",
+        "metaDescription": "Trova il regalo perfetto per ogni occasione nella nostra selezione curata.",
+        "urlHandle": "regali"
+      },
+      "sortOrder": "best_selling",
+      "isPublished": true,
+      "publishedAt": "2024-05-25T09:00:00Z",
+      "createdAt": "2024-05-22T13:00:00Z",
+      "updatedAt": "2024-06-23T15:00:00Z"
+    },
+    {
+      "id": "col-015",
+      "title": "Ultima Chance",
+      "description": "Ultimi pezzi disponibili. Acquista ora prima che finiscano!",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400",
+      "productsCount": 23,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-013",
+          "field": "inventory_stock",
+          "operator": "less_than",
+          "value": "5"
+        },
+        {
+          "id": "cond-014",
+          "field": "inventory_stock",
+          "operator": "greater_than",
+          "value": "0"
+        }
+      ],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Ultima Chance | Nova Shop",
+        "metaDescription": "Ultimi pezzi disponibili. Non perdere l'occasione!",
+        "urlHandle": "ultima-chance"
+      },
+      "sortOrder": "created_asc",
+      "isPublished": true,
+      "publishedAt": "2024-06-01T07:00:00Z",
+      "createdAt": "2024-05-30T16:00:00Z",
+      "updatedAt": "2024-06-25T18:00:00Z"
+    },
+    {
+      "id": "col-016",
+      "title": "Made in Italy",
+      "description": "Prodotti realizzati in Italia con materiali e artigianato di qualita superiore.",
+      "type": "automated",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400",
+      "productsCount": 67,
+      "products": [],
+      "conditions": [
+        {
+          "id": "cond-015",
+          "field": "product_vendor",
+          "operator": "contains",
+          "value": "Italia"
+        }
+      ],
+      "conditionRelation": "all",
+      "seo": {
+        "pageTitle": "Made in Italy | Nova Shop",
+        "metaDescription": "Scopri la nostra collezione di prodotti Made in Italy.",
+        "urlHandle": "made-in-italy"
+      },
+      "sortOrder": "alpha_asc",
+      "isPublished": true,
+      "publishedAt": "2024-06-05T10:00:00Z",
+      "createdAt": "2024-06-02T12:00:00Z",
+      "updatedAt": "2024-06-20T14:00:00Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-001",
+      "title": "T-Shirt Basic Cotone",
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200",
+      "price": "29.99",
+      "inventory": 150,
+      "vendor": "Nova Basics",
+      "type": "Abbigliamento Uomo",
+      "tags": ["bestseller", "basic", "cotone"],
+      "position": 1
+    },
+    {
+      "id": "prod-002",
+      "title": "Jeans Slim Fit Blu",
+      "image": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=200",
+      "price": "79.99",
+      "inventory": 85,
+      "vendor": "Denim Co Italia",
+      "type": "Abbigliamento Uomo",
+      "tags": ["jeans", "slim", "bestseller"],
+      "position": 2
+    },
+    {
+      "id": "prod-003",
+      "title": "Sneakers Urban White",
+      "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=200",
+      "price": "119.99",
+      "inventory": 45,
+      "vendor": "Step Italia",
+      "type": "Calzature",
+      "tags": ["sneakers", "white", "premium"],
+      "position": 3
+    },
+    {
+      "id": "prod-004",
+      "title": "Abito Elegante Donna",
+      "image": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=200",
+      "price": "159.99",
+      "inventory": 32,
+      "vendor": "Elegance Italia",
+      "type": "Abbigliamento Donna",
+      "tags": ["abito", "elegante", "nuovo"],
+      "position": 4
+    },
+    {
+      "id": "prod-005",
+      "title": "Borsa Pelle Premium",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=200",
+      "price": "249.99",
+      "inventory": 18,
+      "vendor": "Leather Italia",
+      "type": "Accessori",
+      "tags": ["borsa", "pelle", "premium"],
+      "position": 5
+    },
+    {
+      "id": "prod-006",
+      "title": "Felpa Eco Cotone Bio",
+      "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=200",
+      "price": "69.99",
+      "inventory": 67,
+      "vendor": "EcoWear",
+      "type": "Abbigliamento Uomo",
+      "tags": ["eco", "cotone", "bio"],
+      "position": 6
+    },
+    {
+      "id": "prod-007",
+      "title": "Occhiali da Sole Aviator",
+      "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200",
+      "price": "89.99",
+      "inventory": 55,
+      "vendor": "Vision Italia",
+      "type": "Accessori",
+      "tags": ["occhiali", "sole", "aviator"],
+      "position": 7
+    },
+    {
+      "id": "prod-008",
+      "title": "Cappotto Lana Inverno",
+      "image": "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=200",
+      "price": "199.99",
+      "inventory": 28,
+      "vendor": "WoolCraft Italia",
+      "type": "Abbigliamento Donna",
+      "tags": ["cappotto", "lana", "inverno", "premium"],
+      "position": 8
+    },
+    {
+      "id": "prod-009",
+      "title": "Leggings Sport Donna",
+      "image": "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=200",
+      "price": "49.99",
+      "inventory": 120,
+      "vendor": "SportFit",
+      "type": "Sportswear",
+      "tags": ["leggings", "sport", "yoga"],
+      "position": 9
+    },
+    {
+      "id": "prod-010",
+      "title": "Cintura Pelle Classica",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=200",
+      "price": "45.99",
+      "inventory": 78,
+      "vendor": "Leather Italia",
+      "type": "Accessori",
+      "tags": ["cintura", "pelle", "classica"],
+      "position": 10
+    },
+    {
+      "id": "prod-011",
+      "title": "Camicia Lino Estate",
+      "image": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=200",
+      "price": "69.99",
+      "inventory": 42,
+      "vendor": "LinenStyle Italia",
+      "type": "Abbigliamento Uomo",
+      "tags": ["camicia", "lino", "estate", "nuovo"],
+      "position": 11
+    },
+    {
+      "id": "prod-012",
+      "title": "Sandali Pelle Donna",
+      "image": "https://images.unsplash.com/photo-1603487742131-4160ec999306?w=200",
+      "price": "89.99",
+      "inventory": 3,
+      "vendor": "Step Italia",
+      "type": "Calzature",
+      "tags": ["sandali", "pelle", "estate"],
+      "position": 12
+    }
+  ]
+}

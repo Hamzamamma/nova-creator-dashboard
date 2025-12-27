@@ -1,0 +1,592 @@
+{
+  "dateRange": {
+    "start": "2024-12-01",
+    "end": "2024-12-31",
+    "label": "Ultimi 30 giorni"
+  },
+  "revenue": {
+    "totalRevenue": {
+      "value": 125890.50,
+      "previousValue": 112450.30,
+      "change": 13440.20,
+      "changePercent": 11.95,
+      "trend": "up"
+    },
+    "averageOrderValue": {
+      "value": 87.45,
+      "previousValue": 82.30,
+      "change": 5.15,
+      "changePercent": 6.26,
+      "trend": "up"
+    },
+    "grossProfit": {
+      "value": 45320.18,
+      "previousValue": 40120.50,
+      "change": 5199.68,
+      "changePercent": 12.96,
+      "trend": "up"
+    },
+    "netProfit": {
+      "value": 31250.75,
+      "previousValue": 28950.20,
+      "change": 2300.55,
+      "changePercent": 7.95,
+      "trend": "up"
+    }
+  },
+  "orders": {
+    "totalOrders": {
+      "value": 1440,
+      "previousValue": 1367,
+      "change": 73,
+      "changePercent": 5.34,
+      "trend": "up"
+    },
+    "completedOrders": {
+      "value": 1385,
+      "previousValue": 1298,
+      "change": 87,
+      "changePercent": 6.7,
+      "trend": "up"
+    },
+    "pendingOrders": {
+      "value": 42,
+      "previousValue": 55,
+      "change": -13,
+      "changePercent": -23.64,
+      "trend": "down"
+    },
+    "cancelledOrders": {
+      "value": 8,
+      "previousValue": 12,
+      "change": -4,
+      "changePercent": -33.33,
+      "trend": "down"
+    },
+    "returnedOrders": {
+      "value": 5,
+      "previousValue": 2,
+      "change": 3,
+      "changePercent": 150,
+      "trend": "up"
+    }
+  },
+  "customers": {
+    "totalCustomers": {
+      "value": 3245,
+      "previousValue": 2980,
+      "change": 265,
+      "changePercent": 8.89,
+      "trend": "up"
+    },
+    "newCustomers": {
+      "value": 485,
+      "previousValue": 412,
+      "change": 73,
+      "changePercent": 17.72,
+      "trend": "up"
+    },
+    "returningCustomers": {
+      "value": 2760,
+      "previousValue": 2568,
+      "change": 192,
+      "changePercent": 7.48,
+      "trend": "up"
+    },
+    "averageLifetimeValue": {
+      "value": 245.80,
+      "previousValue": 232.50,
+      "change": 13.30,
+      "changePercent": 5.72,
+      "trend": "up"
+    },
+    "acquisitionCost": {
+      "value": 18.50,
+      "previousValue": 21.30,
+      "change": -2.80,
+      "changePercent": -13.15,
+      "trend": "down"
+    },
+    "repeatPurchaseRate": {
+      "value": 38.5,
+      "previousValue": 35.2,
+      "change": 3.3,
+      "changePercent": 9.38,
+      "trend": "up"
+    }
+  },
+  "conversion": {
+    "conversionRate": {
+      "value": 3.45,
+      "previousValue": 3.12,
+      "change": 0.33,
+      "changePercent": 10.58,
+      "trend": "up"
+    },
+    "cartAbandonmentRate": {
+      "value": 68.5,
+      "previousValue": 71.2,
+      "change": -2.7,
+      "changePercent": -3.79,
+      "trend": "down"
+    },
+    "checkoutCompletionRate": {
+      "value": 85.3,
+      "previousValue": 82.1,
+      "change": 3.2,
+      "changePercent": 3.90,
+      "trend": "up"
+    }
+  },
+  "revenueChart": {
+    "daily": [
+      { "date": "2024-12-01", "label": "1 Dic", "value": 4250.30, "previousValue": 3890.20 },
+      { "date": "2024-12-02", "label": "2 Dic", "value": 3890.50, "previousValue": 3650.40 },
+      { "date": "2024-12-03", "label": "3 Dic", "value": 4120.75, "previousValue": 3780.30 },
+      { "date": "2024-12-04", "label": "4 Dic", "value": 4580.20, "previousValue": 4120.50 },
+      { "date": "2024-12-05", "label": "5 Dic", "value": 5230.40, "previousValue": 4580.20 },
+      { "date": "2024-12-06", "label": "6 Dic", "value": 5890.30, "previousValue": 5120.40 },
+      { "date": "2024-12-07", "label": "7 Dic", "value": 6120.50, "previousValue": 5450.30 },
+      { "date": "2024-12-08", "label": "8 Dic", "value": 4890.20, "previousValue": 4320.50 },
+      { "date": "2024-12-09", "label": "9 Dic", "value": 4120.30, "previousValue": 3890.40 },
+      { "date": "2024-12-10", "label": "10 Dic", "value": 4350.50, "previousValue": 4010.20 },
+      { "date": "2024-12-11", "label": "11 Dic", "value": 4680.40, "previousValue": 4250.30 },
+      { "date": "2024-12-12", "label": "12 Dic", "value": 5120.30, "previousValue": 4580.40 },
+      { "date": "2024-12-13", "label": "13 Dic", "value": 5450.50, "previousValue": 4890.20 },
+      { "date": "2024-12-14", "label": "14 Dic", "value": 5890.40, "previousValue": 5230.50 },
+      { "date": "2024-12-15", "label": "15 Dic", "value": 4580.30, "previousValue": 4120.40 },
+      { "date": "2024-12-16", "label": "16 Dic", "value": 4250.50, "previousValue": 3890.30 },
+      { "date": "2024-12-17", "label": "17 Dic", "value": 4450.40, "previousValue": 4020.50 },
+      { "date": "2024-12-18", "label": "18 Dic", "value": 4780.30, "previousValue": 4350.40 },
+      { "date": "2024-12-19", "label": "19 Dic", "value": 5120.50, "previousValue": 4680.30 },
+      { "date": "2024-12-20", "label": "20 Dic", "value": 5680.40, "previousValue": 5120.50 },
+      { "date": "2024-12-21", "label": "21 Dic", "value": 6250.30, "previousValue": 5580.40 },
+      { "date": "2024-12-22", "label": "22 Dic", "value": 5120.50, "previousValue": 4650.30 },
+      { "date": "2024-12-23", "label": "23 Dic", "value": 4580.40, "previousValue": 4120.50 },
+      { "date": "2024-12-24", "label": "24 Dic", "value": 4890.30, "previousValue": 4350.40 },
+      { "date": "2024-12-25", "label": "25 Dic", "value": 3250.50, "previousValue": 2890.30 },
+      { "date": "2024-12-26", "label": "26 Dic", "value": 5450.40, "previousValue": 4780.50 },
+      { "date": "2024-12-27", "label": "27 Dic", "value": 5890.30, "previousValue": 5120.40 },
+      { "date": "2024-12-28", "label": "28 Dic", "value": 6120.50, "previousValue": 5450.30 },
+      { "date": "2024-12-29", "label": "29 Dic", "value": 4890.40, "previousValue": 4350.50 },
+      { "date": "2024-12-30", "label": "30 Dic", "value": 4580.30, "previousValue": 4120.40 }
+    ],
+    "weekly": [
+      { "date": "2024-12-01", "label": "Sett 1", "value": 34082.95, "previousValue": 30591.30 },
+      { "date": "2024-12-08", "label": "Sett 2", "value": 28051.60, "previousValue": 25451.00 },
+      { "date": "2024-12-15", "label": "Sett 3", "value": 33610.40, "previousValue": 30261.15 },
+      { "date": "2024-12-22", "label": "Sett 4", "value": 30145.55, "previousValue": 27146.85 }
+    ],
+    "monthly": [
+      { "date": "2024-07", "label": "Lug", "value": 98450.30, "previousValue": 89120.50 },
+      { "date": "2024-08", "label": "Ago", "value": 85320.40, "previousValue": 78450.30 },
+      { "date": "2024-09", "label": "Set", "value": 102450.50, "previousValue": 95320.40 },
+      { "date": "2024-10", "label": "Ott", "value": 115890.30, "previousValue": 105450.50 },
+      { "date": "2024-11", "label": "Nov", "value": 112450.30, "previousValue": 108920.40 },
+      { "date": "2024-12", "label": "Dic", "value": 125890.50, "previousValue": 112450.30 }
+    ]
+  },
+  "ordersChart": {
+    "daily": [
+      { "date": "2024-12-01", "label": "1 Dic", "value": 48, "previousValue": 42 },
+      { "date": "2024-12-02", "label": "2 Dic", "value": 45, "previousValue": 40 },
+      { "date": "2024-12-03", "label": "3 Dic", "value": 52, "previousValue": 48 },
+      { "date": "2024-12-04", "label": "4 Dic", "value": 55, "previousValue": 50 },
+      { "date": "2024-12-05", "label": "5 Dic", "value": 58, "previousValue": 52 },
+      { "date": "2024-12-06", "label": "6 Dic", "value": 62, "previousValue": 55 },
+      { "date": "2024-12-07", "label": "7 Dic", "value": 65, "previousValue": 58 },
+      { "date": "2024-12-08", "label": "8 Dic", "value": 52, "previousValue": 48 },
+      { "date": "2024-12-09", "label": "9 Dic", "value": 48, "previousValue": 45 },
+      { "date": "2024-12-10", "label": "10 Dic", "value": 50, "previousValue": 46 },
+      { "date": "2024-12-11", "label": "11 Dic", "value": 54, "previousValue": 50 },
+      { "date": "2024-12-12", "label": "12 Dic", "value": 58, "previousValue": 52 },
+      { "date": "2024-12-13", "label": "13 Dic", "value": 60, "previousValue": 54 },
+      { "date": "2024-12-14", "label": "14 Dic", "value": 63, "previousValue": 56 },
+      { "date": "2024-12-15", "label": "15 Dic", "value": 50, "previousValue": 46 },
+      { "date": "2024-12-16", "label": "16 Dic", "value": 47, "previousValue": 44 },
+      { "date": "2024-12-17", "label": "17 Dic", "value": 52, "previousValue": 48 },
+      { "date": "2024-12-18", "label": "18 Dic", "value": 55, "previousValue": 50 },
+      { "date": "2024-12-19", "label": "19 Dic", "value": 58, "previousValue": 52 },
+      { "date": "2024-12-20", "label": "20 Dic", "value": 62, "previousValue": 56 },
+      { "date": "2024-12-21", "label": "21 Dic", "value": 68, "previousValue": 60 },
+      { "date": "2024-12-22", "label": "22 Dic", "value": 55, "previousValue": 50 },
+      { "date": "2024-12-23", "label": "23 Dic", "value": 52, "previousValue": 48 },
+      { "date": "2024-12-24", "label": "24 Dic", "value": 58, "previousValue": 52 },
+      { "date": "2024-12-25", "label": "25 Dic", "value": 35, "previousValue": 32 },
+      { "date": "2024-12-26", "label": "26 Dic", "value": 60, "previousValue": 54 },
+      { "date": "2024-12-27", "label": "27 Dic", "value": 65, "previousValue": 58 },
+      { "date": "2024-12-28", "label": "28 Dic", "value": 68, "previousValue": 60 },
+      { "date": "2024-12-29", "label": "29 Dic", "value": 55, "previousValue": 50 },
+      { "date": "2024-12-30", "label": "30 Dic", "value": 52, "previousValue": 48 }
+    ],
+    "weekly": [
+      { "date": "2024-12-01", "label": "Sett 1", "value": 385, "previousValue": 345 },
+      { "date": "2024-12-08", "label": "Sett 2", "value": 335, "previousValue": 301 },
+      { "date": "2024-12-15", "label": "Sett 3", "value": 392, "previousValue": 346 },
+      { "date": "2024-12-22", "label": "Sett 4", "value": 328, "previousValue": 295 }
+    ],
+    "monthly": [
+      { "date": "2024-07", "label": "Lug", "value": 1120, "previousValue": 1050 },
+      { "date": "2024-08", "label": "Ago", "value": 980, "previousValue": 920 },
+      { "date": "2024-09", "label": "Set", "value": 1250, "previousValue": 1180 },
+      { "date": "2024-10", "label": "Ott", "value": 1380, "previousValue": 1290 },
+      { "date": "2024-11", "label": "Nov", "value": 1367, "previousValue": 1320 },
+      { "date": "2024-12", "label": "Dic", "value": 1440, "previousValue": 1367 }
+    ]
+  },
+  "topProducts": [
+    {
+      "id": "prod_001",
+      "name": "T-Shirt Premium Cotone Bio",
+      "sku": "TSH-001-WHT",
+      "salesCount": 245,
+      "revenue": 12250.00,
+      "category": "Abbigliamento",
+      "trend": "up",
+      "changePercent": 15.5
+    },
+    {
+      "id": "prod_002",
+      "name": "Felpa con Cappuccio Logo",
+      "sku": "FEL-002-BLK",
+      "salesCount": 198,
+      "revenue": 15840.00,
+      "category": "Abbigliamento",
+      "trend": "up",
+      "changePercent": 12.3
+    },
+    {
+      "id": "prod_003",
+      "name": "Jeans Slim Fit Denim",
+      "sku": "JNS-003-BLU",
+      "salesCount": 175,
+      "revenue": 14000.00,
+      "category": "Abbigliamento",
+      "trend": "up",
+      "changePercent": 8.7
+    },
+    {
+      "id": "prod_004",
+      "name": "Sneakers Urban Style",
+      "sku": "SNK-004-MIX",
+      "salesCount": 156,
+      "revenue": 18720.00,
+      "category": "Calzature",
+      "trend": "neutral",
+      "changePercent": 2.1
+    },
+    {
+      "id": "prod_005",
+      "name": "Giacca Impermeabile Tech",
+      "sku": "GIA-005-NVY",
+      "salesCount": 142,
+      "revenue": 21300.00,
+      "category": "Outerwear",
+      "trend": "up",
+      "changePercent": 22.4
+    },
+    {
+      "id": "prod_006",
+      "name": "Borsa Shopper Eco",
+      "sku": "BRS-006-TAN",
+      "salesCount": 128,
+      "revenue": 5120.00,
+      "category": "Accessori",
+      "trend": "down",
+      "changePercent": -5.2
+    },
+    {
+      "id": "prod_007",
+      "name": "Cappello Baseball Logo",
+      "sku": "CAP-007-BLK",
+      "salesCount": 115,
+      "revenue": 2875.00,
+      "category": "Accessori",
+      "trend": "up",
+      "changePercent": 18.9
+    },
+    {
+      "id": "prod_008",
+      "name": "Polo Classic Fit",
+      "sku": "POL-008-WHT",
+      "salesCount": 108,
+      "revenue": 6480.00,
+      "category": "Abbigliamento",
+      "trend": "neutral",
+      "changePercent": 0.5
+    }
+  ],
+  "topCustomers": [
+    {
+      "id": "cust_001",
+      "name": "Marco Rossi",
+      "email": "marco.rossi@email.it",
+      "totalOrders": 28,
+      "totalSpent": 4580.50,
+      "lastOrderDate": "2024-12-28",
+      "customerSince": "2023-03-15",
+      "segment": "vip"
+    },
+    {
+      "id": "cust_002",
+      "name": "Laura Bianchi",
+      "email": "laura.bianchi@email.it",
+      "totalOrders": 24,
+      "totalSpent": 3920.00,
+      "lastOrderDate": "2024-12-26",
+      "customerSince": "2023-05-22",
+      "segment": "vip"
+    },
+    {
+      "id": "cust_003",
+      "name": "Giuseppe Verdi",
+      "email": "giuseppe.verdi@email.it",
+      "totalOrders": 21,
+      "totalSpent": 3450.75,
+      "lastOrderDate": "2024-12-24",
+      "customerSince": "2023-07-10",
+      "segment": "vip"
+    },
+    {
+      "id": "cust_004",
+      "name": "Sofia Esposito",
+      "email": "sofia.esposito@email.it",
+      "totalOrders": 18,
+      "totalSpent": 2890.00,
+      "lastOrderDate": "2024-12-22",
+      "customerSince": "2023-09-05",
+      "segment": "regular"
+    },
+    {
+      "id": "cust_005",
+      "name": "Andrea Ferrari",
+      "email": "andrea.ferrari@email.it",
+      "totalOrders": 16,
+      "totalSpent": 2650.25,
+      "lastOrderDate": "2024-12-20",
+      "customerSince": "2023-10-18",
+      "segment": "regular"
+    },
+    {
+      "id": "cust_006",
+      "name": "Chiara Romano",
+      "email": "chiara.romano@email.it",
+      "totalOrders": 14,
+      "totalSpent": 2280.00,
+      "lastOrderDate": "2024-12-18",
+      "customerSince": "2024-01-08",
+      "segment": "regular"
+    },
+    {
+      "id": "cust_007",
+      "name": "Luca Marino",
+      "email": "luca.marino@email.it",
+      "totalOrders": 12,
+      "totalSpent": 1950.50,
+      "lastOrderDate": "2024-12-15",
+      "customerSince": "2024-02-20",
+      "segment": "regular"
+    },
+    {
+      "id": "cust_008",
+      "name": "Elena Colombo",
+      "email": "elena.colombo@email.it",
+      "totalOrders": 3,
+      "totalSpent": 485.00,
+      "lastOrderDate": "2024-12-10",
+      "customerSince": "2024-11-15",
+      "segment": "new"
+    }
+  ],
+  "trafficSources": [
+    { "source": "Ricerca Organica", "visitors": 15420, "orders": 580, "revenue": 48520.00, "conversionRate": 3.76, "percentage": 38.5 },
+    { "source": "Social Media", "visitors": 8950, "orders": 298, "revenue": 24350.00, "conversionRate": 3.33, "percentage": 19.3 },
+    { "source": "Email Marketing", "visitors": 4280, "orders": 245, "revenue": 21850.00, "conversionRate": 5.72, "percentage": 17.4 },
+    { "source": "Referral", "visitors": 3650, "orders": 142, "revenue": 12480.00, "conversionRate": 3.89, "percentage": 9.9 },
+    { "source": "Traffico Diretto", "visitors": 5120, "orders": 125, "revenue": 10890.00, "conversionRate": 2.44, "percentage": 8.7 },
+    { "source": "Pubblicita Pagata", "visitors": 2450, "orders": 50, "revenue": 7800.00, "conversionRate": 2.04, "percentage": 6.2 }
+  ],
+  "salesByLocation": [
+    { "region": "Lombardia", "country": "Italia", "orders": 385, "revenue": 33250.00, "percentage": 26.4 },
+    { "region": "Lazio", "country": "Italia", "orders": 245, "revenue": 21120.00, "percentage": 16.8 },
+    { "region": "Campania", "country": "Italia", "orders": 198, "revenue": 17080.00, "percentage": 13.6 },
+    { "region": "Piemonte", "country": "Italia", "orders": 165, "revenue": 14230.00, "percentage": 11.3 },
+    { "region": "Veneto", "country": "Italia", "orders": 142, "revenue": 12240.00, "percentage": 9.7 },
+    { "region": "Emilia-Romagna", "country": "Italia", "orders": 128, "revenue": 11040.00, "percentage": 8.8 },
+    { "region": "Toscana", "country": "Italia", "orders": 98, "revenue": 8450.00, "percentage": 6.7 },
+    { "region": "Altre Regioni", "country": "Italia", "orders": 79, "revenue": 8480.50, "percentage": 6.7 }
+  ],
+  "salesByCategory": [
+    { "category": "Abbigliamento", "sales": 726, "revenue": 48570.00, "percentage": 38.6, "growth": 12.5 },
+    { "category": "Calzature", "sales": 312, "revenue": 37440.00, "percentage": 29.7, "growth": 8.3 },
+    { "category": "Accessori", "sales": 243, "revenue": 7995.00, "percentage": 6.4, "growth": 15.2 },
+    { "category": "Outerwear", "sales": 142, "revenue": 21300.00, "percentage": 16.9, "growth": 22.4 },
+    { "category": "Intimo", "sales": 98, "revenue": 5880.00, "percentage": 4.7, "growth": 5.8 },
+    { "category": "Sport", "sales": 65, "revenue": 4705.50, "percentage": 3.7, "growth": -2.1 }
+  ],
+  "salesByChannel": [
+    { "channel": "Sito Web", "orders": 892, "revenue": 78500.00, "percentage": 62.4, "growth": 10.2 },
+    { "channel": "App Mobile", "orders": 345, "revenue": 28950.00, "percentage": 23.0, "growth": 25.8 },
+    { "channel": "Instagram Shop", "orders": 125, "revenue": 10250.00, "percentage": 8.1, "growth": 18.5 },
+    { "channel": "Facebook Shop", "orders": 78, "revenue": 8190.50, "percentage": 6.5, "growth": 5.2 }
+  ],
+  "discountImpact": {
+    "totalDiscounts": 8450.75,
+    "ordersWithDiscount": 485,
+    "averageDiscount": 17.42,
+    "discountPercentage": 33.68,
+    "revenueImpact": -6.71
+  },
+  "refundAnalysis": {
+    "totalRefunds": 2580.50,
+    "refundCount": 32,
+    "averageRefundAmount": 80.64,
+    "refundRate": 2.22,
+    "topRefundReasons": [
+      { "reason": "Taglia sbagliata", "count": 12, "amount": 985.00 },
+      { "reason": "Prodotto difettoso", "count": 8, "amount": 720.50 },
+      { "reason": "Non conforme alla descrizione", "count": 6, "amount": 485.00 },
+      { "reason": "Cambio idea", "count": 4, "amount": 280.00 },
+      { "reason": "Altro", "count": 2, "amount": 110.00 }
+    ]
+  },
+  "customerSegments": [
+    {
+      "name": "VIP",
+      "count": 245,
+      "percentage": 7.5,
+      "averageOrderValue": 125.50,
+      "totalRevenue": 45250.00,
+      "description": "Clienti con spesa superiore a 2000 euro"
+    },
+    {
+      "name": "Clienti Fedeli",
+      "count": 685,
+      "percentage": 21.1,
+      "averageOrderValue": 95.80,
+      "totalRevenue": 38520.00,
+      "description": "Clienti con oltre 5 ordini"
+    },
+    {
+      "name": "Clienti Regolari",
+      "count": 1250,
+      "percentage": 38.5,
+      "averageOrderValue": 78.40,
+      "totalRevenue": 32450.00,
+      "description": "Clienti con 2-5 ordini"
+    },
+    {
+      "name": "Nuovi Clienti",
+      "count": 485,
+      "percentage": 14.9,
+      "averageOrderValue": 65.20,
+      "totalRevenue": 6850.00,
+      "description": "Primo acquisto negli ultimi 30 giorni"
+    },
+    {
+      "name": "Clienti a Rischio",
+      "count": 580,
+      "percentage": 17.9,
+      "averageOrderValue": 52.30,
+      "totalRevenue": 2820.50,
+      "description": "Nessun acquisto negli ultimi 90 giorni"
+    }
+  ],
+  "reportTemplates": [
+    {
+      "id": "rpt_001",
+      "name": "Report Vendite Giornaliero",
+      "description": "Riepilogo delle vendite del giorno con metriche chiave",
+      "type": "sales",
+      "frequency": "daily",
+      "lastGenerated": "2024-12-30T08:00:00Z",
+      "isScheduled": true
+    },
+    {
+      "id": "rpt_002",
+      "name": "Report Clienti Settimanale",
+      "description": "Analisi dei clienti e segmentazione",
+      "type": "customers",
+      "frequency": "weekly",
+      "lastGenerated": "2024-12-29T08:00:00Z",
+      "isScheduled": true
+    },
+    {
+      "id": "rpt_003",
+      "name": "Report Prodotti Mensile",
+      "description": "Performance dei prodotti e analisi delle vendite",
+      "type": "products",
+      "frequency": "monthly",
+      "lastGenerated": "2024-12-01T08:00:00Z",
+      "isScheduled": true
+    },
+    {
+      "id": "rpt_004",
+      "name": "Report Finanziario",
+      "description": "Panoramica finanziaria completa con profitti e perdite",
+      "type": "financial",
+      "lastGenerated": "2024-12-15T10:00:00Z",
+      "isScheduled": false
+    }
+  ],
+  "scheduledReports": [
+    {
+      "id": "sch_001",
+      "templateId": "rpt_001",
+      "name": "Report Vendite Giornaliero",
+      "frequency": "daily",
+      "nextRun": "2024-12-31T08:00:00Z",
+      "recipients": ["admin@nova.it", "vendite@nova.it"],
+      "format": "pdf",
+      "isActive": true
+    },
+    {
+      "id": "sch_002",
+      "templateId": "rpt_002",
+      "name": "Report Clienti Settimanale",
+      "frequency": "weekly",
+      "nextRun": "2025-01-05T08:00:00Z",
+      "recipients": ["admin@nova.it"],
+      "format": "excel",
+      "isActive": true
+    }
+  ],
+  "reportHistory": [
+    {
+      "id": "hist_001",
+      "name": "Report Vendite - 30 Dicembre 2024",
+      "generatedAt": "2024-12-30T08:00:00Z",
+      "type": "sales",
+      "format": "pdf",
+      "size": "245 KB",
+      "downloadUrl": "/reports/vendite-2024-12-30.pdf"
+    },
+    {
+      "id": "hist_002",
+      "name": "Report Vendite - 29 Dicembre 2024",
+      "generatedAt": "2024-12-29T08:00:00Z",
+      "type": "sales",
+      "format": "pdf",
+      "size": "238 KB",
+      "downloadUrl": "/reports/vendite-2024-12-29.pdf"
+    },
+    {
+      "id": "hist_003",
+      "name": "Report Clienti - Settimana 52",
+      "generatedAt": "2024-12-29T08:00:00Z",
+      "type": "customers",
+      "format": "excel",
+      "size": "512 KB",
+      "downloadUrl": "/reports/clienti-sett52-2024.xlsx"
+    },
+    {
+      "id": "hist_004",
+      "name": "Report Finanziario - Dicembre 2024",
+      "generatedAt": "2024-12-15T10:00:00Z",
+      "type": "financial",
+      "format": "pdf",
+      "size": "1.2 MB",
+      "downloadUrl": "/reports/finanziario-dic-2024.pdf"
+    }
+  ]
+}

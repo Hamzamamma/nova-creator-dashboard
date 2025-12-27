@@ -11,13 +11,6 @@ import {
   Text,
   ActionList,
   Popover,
-  Badge,
-  Avatar,
-  BlockStack,
-  InlineStack,
-  Divider,
-  Box,
-  Button,
 } from "@shopify/polaris";
 import {
   HomeIcon,
@@ -34,10 +27,6 @@ import {
   CollectionIcon,
   ChartVerticalIcon,
   FileIcon,
-  CheckCircleIcon,
-  AlertTriangleIcon,
-  ClockIcon,
-  StarIcon,
 } from "@shopify/polaris-icons";
 import "@shopify/polaris/build/esm/styles.css";
 
@@ -53,17 +42,6 @@ export default function DashboardLayout({
   const [searchActive, setSearchActive] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [notificationsActive, setNotificationsActive] = useState(false);
-  const [storeMenuActive, setStoreMenuActive] = useState(false);
-
-  // Notifiche di esempio
-  const notifications = [
-    { id: 1, title: "Nuovo ordine #1234", message: "Hai ricevuto un nuovo ordine", time: "5 min fa", read: false, icon: OrderIcon, tone: "success" },
-    { id: 2, title: "Prodotto esaurito", message: "T-Shirt Logo e quasi esaurita", time: "1 ora fa", read: false, icon: AlertTriangleIcon, tone: "warning" },
-    { id: 3, title: "Pagamento ricevuto", message: "Accredito di 234,50 EUR completato", time: "2 ore fa", read: true, icon: CashDollarIcon, tone: "success" },
-    { id: 4, title: "Nuova recensione", message: "Un cliente ha lasciato 5 stelle", time: "Ieri", read: true, icon: StarIcon, tone: "info" },
-  ];
-
-  const unreadCount = notifications.filter(n => !n.read).length;
 
   const toggleMobileNavigation = useCallback(
     () => setMobileNavigationActive((active) => !active),
@@ -92,6 +70,7 @@ export default function DashboardLayout({
   const navigationMarkup = (
     <Navigation location={pathname}>
       <Navigation.Section
+        title="Dashboard"
         items={[
           {
             label: "Home",
@@ -104,19 +83,12 @@ export default function DashboardLayout({
             icon: OrderIcon,
             selected: pathname === "/ordini",
             onClick: () => router.push("/ordini"),
-            badge: "3",
           },
           {
             label: "Prodotti",
             icon: ProductIcon,
             selected: pathname === "/prodotti" || pathname.startsWith("/prodotti/"),
             onClick: () => router.push("/prodotti"),
-          },
-          {
-            label: "Collezioni",
-            icon: CollectionIcon,
-            selected: pathname === "/collezioni" || pathname.startsWith("/collezioni/"),
-            onClick: () => router.push("/collezioni"),
           },
         ]}
       />
@@ -130,6 +102,18 @@ export default function DashboardLayout({
             onClick: () => router.push("/analytics"),
           },
           {
+            label: "Vendite",
+            icon: CashDollarIcon,
+            selected: pathname === "/analytics/vendite",
+            onClick: () => router.push("/analytics/vendite"),
+          },
+          {
+            label: "Clienti",
+            icon: PersonIcon,
+            selected: pathname === "/analytics/clienti",
+            onClick: () => router.push("/analytics/clienti"),
+          },
+          {
             label: "Report",
             icon: FileIcon,
             selected: pathname === "/analytics/report",
@@ -138,19 +122,31 @@ export default function DashboardLayout({
         ]}
       />
       <Navigation.Section
-        title="Finanze"
+        title="Gestione"
         items={[
           {
-            label: "Guadagni",
-            icon: CashDollarIcon,
-            selected: pathname === "/finanze",
-            onClick: () => router.push("/finanze"),
+            label: "Collezioni",
+            icon: CollectionIcon,
+            selected: pathname === "/collezioni" || pathname.startsWith("/collezioni/"),
+            onClick: () => router.push("/collezioni"),
           },
           {
             label: "Sconti",
             icon: DiscountIcon,
             selected: pathname === "/sconti" || pathname.startsWith("/sconti/"),
             onClick: () => router.push("/sconti"),
+          },
+          {
+            label: "Finanze",
+            icon: CashDollarIcon,
+            selected: pathname === "/finanze",
+            onClick: () => router.push("/finanze"),
+          },
+          {
+            label: "Clienti",
+            icon: PersonIcon,
+            selected: pathname === "/users",
+            onClick: () => router.push("/users"),
           },
         ]}
       />
@@ -163,15 +159,10 @@ export default function DashboardLayout({
             selected: pathname === "/negozio",
             onClick: () => router.push("/negozio"),
           },
-          {
-            label: "Clienti",
-            icon: PersonIcon,
-            selected: pathname === "/users",
-            onClick: () => router.push("/users"),
-          },
         ]}
       />
       <Navigation.Section
+        title="Impostazioni"
         items={[
           {
             label: "Impostazioni",
@@ -190,31 +181,31 @@ export default function DashboardLayout({
       actions={[
         {
           items: [
-            { content: "Il mio profilo", icon: PersonIcon, onAction: () => router.push("/settings") },
-            { content: "Impostazioni account", icon: SettingsIcon, onAction: () => router.push("/settings") },
-            { content: "Centro assistenza", icon: QuestionCircleIcon, onAction: () => window.open("https://help.shopify.com", "_blank") },
+            { content: "Profilo", icon: PersonIcon, onAction: () => router.push("/settings") },
+            { content: "Impostazioni", icon: SettingsIcon, onAction: () => router.push("/settings") },
           ],
         },
         {
-          items: [{ content: "Esci", icon: ExitIcon, destructive: true, onAction: () => console.log("Logout") }],
+          items: [{ content: "Esci", icon: ExitIcon, onAction: () => console.log("Logout") }],
         },
       ]}
-      name="Hamza"
-      detail="Creator Pro"
-      initials="H"
+      name="Admin"
+      detail="Nova Creator"
+      initials="N"
       open={userMenuActive}
       onToggle={toggleUserMenu}
-      avatar="https://api.dicebear.com/7.x/initials/svg?seed=Hamza"
     />
   );
 
   const searchResultsMarkup = (
     <ActionList
       items={[
-        { content: "Ordini", helpText: "Cerca nei tuoi ordini", icon: OrderIcon, onAction: () => router.push("/ordini") },
-        { content: "Prodotti", helpText: "Cerca nei tuoi prodotti", icon: ProductIcon, onAction: () => router.push("/prodotti") },
-        { content: "Collezioni", helpText: "Cerca nelle collezioni", icon: CollectionIcon, onAction: () => router.push("/collezioni") },
-        { content: "Clienti", helpText: "Cerca tra i clienti", icon: PersonIcon, onAction: () => router.push("/users") },
+        { content: "Cerca ordini...", icon: OrderIcon, onAction: () => router.push("/ordini") },
+        { content: "Cerca prodotti...", icon: ProductIcon, onAction: () => router.push("/prodotti") },
+        { content: "Cerca collezioni...", icon: CollectionIcon, onAction: () => router.push("/collezioni") },
+        { content: "Cerca clienti...", icon: PersonIcon, onAction: () => router.push("/users") },
+        { content: "Cerca sconti...", icon: DiscountIcon, onAction: () => router.push("/sconti") },
+        { content: "Analytics...", icon: ChartVerticalIcon, onAction: () => router.push("/analytics") },
       ]}
     />
   );
@@ -223,13 +214,12 @@ export default function DashboardLayout({
     <TopBar.SearchField
       onChange={handleSearchChange}
       value={searchValue}
-      placeholder="Cerca ordini, prodotti, clienti..."
+      placeholder="Cerca"
     />
   );
 
   const secondaryMenuMarkup = (
-    <InlineStack gap="100" blockAlign="center">
-      {/* Notifiche */}
+    <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
       <Popover
         active={notificationsActive}
         activator={
@@ -241,77 +231,21 @@ export default function DashboardLayout({
               borderRadius: "8px",
               display: "flex",
               alignItems: "center",
-              position: "relative",
             }}
           >
             <Icon source={NotificationIcon} tone="base" />
-            {unreadCount > 0 && (
-              <span style={{
-                position: "absolute",
-                top: "4px",
-                right: "4px",
-                width: "8px",
-                height: "8px",
-                backgroundColor: "#e51c00",
-                borderRadius: "50%",
-              }} />
-            )}
           </div>
         }
         onClose={() => setNotificationsActive(false)}
         preferredAlignment="right"
       >
-        <div style={{ width: "360px" }}>
-          <div style={{ padding: "16px", borderBottom: "1px solid #e1e3e5" }}>
-            <InlineStack align="space-between" blockAlign="center">
-              <Text as="h3" variant="headingMd">Notifiche</Text>
-              {unreadCount > 0 && <Badge tone="attention">{unreadCount} nuove</Badge>}
-            </InlineStack>
-          </div>
-          <div style={{ maxHeight: "400px", overflow: "auto" }}>
-            {notifications.map((notification) => (
-              <div
-                key={notification.id}
-                style={{
-                  padding: "12px 16px",
-                  borderBottom: "1px solid #f1f1f1",
-                  backgroundColor: notification.read ? "#fff" : "#f6f6f7",
-                  cursor: "pointer",
-                }}
-              >
-                <InlineStack gap="300" blockAlign="start">
-                  <Box
-                    background={notification.tone === "success" ? "bg-fill-success" : notification.tone === "warning" ? "bg-fill-warning" : "bg-fill-info"}
-                    padding="200"
-                    borderRadius="full"
-                  >
-                    <Icon source={notification.icon} tone="text-inverse" />
-                  </Box>
-                  <BlockStack gap="050">
-                    <InlineStack gap="200" blockAlign="center">
-                      <Text as="p" variant="bodyMd" fontWeight={notification.read ? "regular" : "semibold"}>
-                        {notification.title}
-                      </Text>
-                      {!notification.read && (
-                        <span style={{ width: "6px", height: "6px", backgroundColor: "#2c6ecb", borderRadius: "50%" }} />
-                      )}
-                    </InlineStack>
-                    <Text as="p" variant="bodySm" tone="subdued">{notification.message}</Text>
-                    <Text as="p" variant="bodySm" tone="subdued">
-                      <Icon source={ClockIcon} tone="subdued" /> {notification.time}
-                    </Text>
-                  </BlockStack>
-                </InlineStack>
-              </div>
-            ))}
-          </div>
-          <div style={{ padding: "12px 16px", borderTop: "1px solid #e1e3e5", textAlign: "center" }}>
-            <Button variant="plain" fullWidth>Vedi tutte le notifiche</Button>
+        <div style={{ padding: "16px", minWidth: "280px" }}>
+          <Text as="h3" variant="headingMd">Notifiche</Text>
+          <div style={{ marginTop: "12px", color: "#637381" }}>
+            <Text as="p" variant="bodySm" tone="subdued">Nessuna nuova notifica</Text>
           </div>
         </div>
       </Popover>
-
-      {/* Help */}
       <div
         onClick={() => window.open("https://help.shopify.com", "_blank")}
         style={{
@@ -324,7 +258,7 @@ export default function DashboardLayout({
       >
         <Icon source={QuestionCircleIcon} tone="base" />
       </div>
-    </InlineStack>
+    </div>
   );
 
   const topBarMarkup = (
@@ -341,11 +275,11 @@ export default function DashboardLayout({
   );
 
   const logo = {
-    width: 120,
+    width: 110,
     topBarSource: "/nova-logo.svg",
     contextualSaveBarSource: "/nova-logo.svg",
     url: "/dashboard",
-    accessibilityLabel: "Nova Creator Dashboard",
+    accessibilityLabel: "Nova Dashboard",
   };
 
   return (
